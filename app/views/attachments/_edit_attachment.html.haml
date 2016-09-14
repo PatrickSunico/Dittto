@@ -1,0 +1,17 @@
+- if attachment.errors.any?
+  #error_explanation
+    %h2= pluralize(attachment.errors.count, "error")
+    "prohibited this user from being saved:"
+    %ul
+      - attachment.errors.full_messages.each do |msg|
+        %li= msg
+
+%p
+  %strong= "Thumbnail"
+  = image_tag(attachment.image.url(:thumb).to_s)
+
+#container
+  .header
+    = simple_form_for([attachment.post, attachment]) do |f|
+      = f.input :thumbnail, as: :file, :required => true
+      = f.button :submit

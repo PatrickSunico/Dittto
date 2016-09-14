@@ -1,0 +1,28 @@
+
+%html
+  %head
+    %title Tribbble
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header
+      .wrapper.clearfix
+        #logo= link_to "Tribbble", root_path
+        %nav
+          - if user_signed_in?
+            = link_to "Add New Insipration", new_post_path, class: "button"
+
+            -# Make this as a modal
+            = link_to current_user.first_name, edit_user_registration_path
+            = link_to "View Profile", user_path(current_user.id)
+            = link_to "Logout", destroy_user_session_path, method: :delete
+
+          - else
+            = link_to "Login", new_user_session_path
+            = link_to "Sign up", new_user_registration_path
+
+    %p.notice= notice
+    %p.alert= alert
+    = yield

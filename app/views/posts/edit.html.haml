@@ -1,0 +1,10 @@
+-# Title
+%h1= "Edit Post"
+-# Existing Image on post
+= image_tag @post.thumbnail.url(:medium).to_s
+-# Render Form
+= render 'form'
+
+= link_to "Edit", edit_post_path(@post)
+= link_to "Destroy", post_path(@post), method: :delete, data: {confirm: "Are you Sure?"}
+= link_to "Back", post_path(@post)

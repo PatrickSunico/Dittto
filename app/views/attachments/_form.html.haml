@@ -1,0 +1,5 @@
+#container
+  .header
+    = simple_form_for([attachment.post, attachment], html: { multipart: true, class: "dropzone"}) do |f|
+      .dropzone-previews
+      = f.button :submit
