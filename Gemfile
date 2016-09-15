@@ -72,6 +72,7 @@ group :development do
 
   # ENV Variables
   gem 'figaro'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
