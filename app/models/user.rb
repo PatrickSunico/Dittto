@@ -11,4 +11,5 @@ class User < ApplicationRecord
 
   # Mount Uploader for Avatar
   mount_uploader :avatar, AvatarUploader
+  process_in_background :avatar
 end

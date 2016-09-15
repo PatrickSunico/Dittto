@@ -2,19 +2,20 @@
 
 class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
-  # include Cloudinary::CarrierWave
-  include CarrierWave::RMagick
+  # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave
+  include ::CarrierWave::Backgrounder::Delay
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  # def store_dir
+  #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -34,13 +35,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   # Thumbnail for User profile in navbar
   version :thumb do
-    process :resize_to_fit => [50, 50]
+    process :resize_to_fit => [100, 100]
   end
 
   # For Profile View and Account Settings
-  version :medium do
-    process :resize_to_fit => [200,200]
-  end
+  # version :medium do
+  #   process :resize_to_fit => [200,200]
+  # end
 
 
   # Add a white list of extensions which are allowed to be uploaded.

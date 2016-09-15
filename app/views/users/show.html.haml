@@ -1,5 +1,6 @@
+-# User Profile View
 #profile
-  = image_tag(@user.avatar_url(:medium).to_s)
+  = cl_image_tag(@user.avatar_url(:thumb).to_s)
   %h1= "#{@user.first_name} #{@user.last_name}"
   -# To add a class inside an h3
   %h3{:class => "user"}=@user.occupation
@@ -11,7 +12,7 @@
   - @user_posts.each do |post|
     #projects
       %h4=link_to post.title, post
-      = link_to image_tag(post.thumbnail_url(:thumb).to_s), post
+      = link_to cl_image_tag(post.thumbnail_url(:medium).to_s), post
       %h4=link_to "#{@user.first_name} #{@user.last_name}", user_path(@user.id)
       -# To Nest Outer Strings and variables into one html element
       #stats

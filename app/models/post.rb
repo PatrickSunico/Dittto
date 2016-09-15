@@ -6,4 +6,5 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, :dependent => :destroy
   has_many :attachments, :dependent => :destroy
+  process_in_background :thumbnail
 end

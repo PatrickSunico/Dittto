@@ -1,7 +1,9 @@
+-# Post Show route
+
 = link_to "Back", root_path
 
 %h1= @post.title
-= image_tag @post.thumbnail.url(:medium).to_s
+= cl_image_tag(@post.thumbnail.url(:medium).to_s)
 %p= @post.description
 %p
 Created by:

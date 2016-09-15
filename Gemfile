@@ -58,6 +58,8 @@ group :development do
   gem 'carrierwave'
   gem 'cloudinary'
   gem 'rmagick'
+  gem 'carrierwave_backgrounder'
+  gem 'sidekiq'
   gem 'dropzonejs-rails'
 
   # Notifications
@@ -70,9 +72,6 @@ group :development do
 
   # ENV Variables
   gem 'figaro'
-
-
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

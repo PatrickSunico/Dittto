@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
+//= require cloudinary
 //= require dropzone
 //= require sweetalert-dev
 //= require sweet-alert-confirm
@@ -27,13 +27,3 @@ var sweetAlertConfirmConfig = {
   confirmButtonColor: '#DD6B55',
   confirmButtonText: 'Yes, Delete it'
 };
-
-
-
-var dataSweetAlertConfirmDelete = {
-  title: 'Are you sure',
-  type: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#DD6B55',
-  confirmButtonText: 'Yes, Delete it'
-}
