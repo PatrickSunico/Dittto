@@ -53,10 +53,10 @@ group :development do
   gem 'autoprefixer-rails'
   gem 'haml'
   gem 'simple_form'
-  gem 'normalize-rails'
 
   # Image Handling
   gem 'carrierwave'
+  gem 'cloudinary'
   gem 'rmagick'
   gem 'dropzonejs-rails'
 
@@ -67,6 +67,9 @@ group :development do
   # User Interactions
   gem 'devise'
   gem 'acts_as_votable'
+
+  # ENV Variables
+  gem 'figaro'
 
 
 
