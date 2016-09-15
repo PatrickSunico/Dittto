@@ -2,6 +2,7 @@
 
 class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
+  # include Cloudinary::CarrierWave
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
@@ -31,10 +32,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  # Thumbnail for User profile in navbar
   version :thumb do
     process :resize_to_fit => [50, 50]
   end
 
+  # For Profile View and Account Settings
   version :medium do
     process :resize_to_fit => [200,200]
   end
