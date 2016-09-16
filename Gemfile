@@ -28,7 +28,6 @@ gem 'simple_form'
 # Image Handling
 gem 'carrierwave'
 gem 'cloudinary'
-gem 'rmagick'
 gem 'carrierwave_backgrounder'
 gem 'sidekiq'
 gem 'dropzonejs-rails'
@@ -57,6 +56,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'mysql2', '>= 0.3.18', '< 0.5'
+  gem 'rmagick'
+
 end
 
 group :production do
