@@ -8,11 +8,14 @@ class ApplicationController < ActionController::Base
       # sanitizes the sign_up form then appends :username the one we added via rails migration
       devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name])
       devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:userhandle])
+
 
       # sanitizes the account_update form then appends :username the one we added via rails migration
       devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
       devise_parameter_sanitizer.permit(:account_update, keys: [:first_name])
       devise_parameter_sanitizer.permit(:account_update, keys: [:last_name])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:userhandle])      
       devise_parameter_sanitizer.permit(:account_update, keys: [:occupation])
       devise_parameter_sanitizer.permit(:account_update, keys: [:company])
       devise_parameter_sanitizer.permit(:account_update, keys: [:location])
