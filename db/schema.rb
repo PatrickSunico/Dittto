@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915115938) do
+ActiveRecord::Schema.define(version: 20160916090200) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image"
@@ -38,7 +38,9 @@ ActiveRecord::Schema.define(version: 20160915115938) do
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.integer  "user_id"
+    t.string   "slug"
     t.boolean  "thumbnail_processing",               default: false, null: false
+    t.index ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160915115938) do
     t.string   "website"
     t.string   "avatar"
     t.boolean  "avatar_processing",      default: false, null: false
+    t.string   "userhandle"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
