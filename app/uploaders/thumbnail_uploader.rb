@@ -5,8 +5,16 @@ class ThumbnailUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
-  include Cloudinary::CarrierWave
-  include ::CarrierWave::Backgrounder::Delay
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+    include ::CarrierWave::Backgrounder::Delay
+  else
+    include CarrierWave::RMagick
+    storage :file
+    def store_dir
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    end
+  end
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
