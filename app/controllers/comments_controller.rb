@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_user
-  before_action :create_comment, only: [:create]
 
   def create
     # 1. find the post first
