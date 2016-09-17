@@ -3,7 +3,7 @@ class AttachmentsController < ApplicationController
   before_action :set_upload, :only => [:update, :destroy]
   before_action :authorize_user, except: [:index, :show]
   def new
-    post = Post.find(params[:post_id])
+    post = Post.friendly.find(params[:post_id])
     @attachment = post.attachments.build
     respond_to do |format|
       format.html
@@ -11,7 +11,7 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
     @attachment = @post.attachments.create(attachment_params)
 
     respond_to do |format|
@@ -53,7 +53,7 @@ class AttachmentsController < ApplicationController
 
   private
     def set_upload
-      @post = Post.find(params[:post_id])
+      @post = Post.friendly.find(params[:post_id])
       @attachment = @post.attachments.find(params[:id])
     end
 
@@ -63,17 +63,26 @@ class AttachmentsController < ApplicationController
 
     def authorize_user
       user = User.find_by_id(params[:user_id])
-      post = Post.find_by_id(params[:post_id])
+      post = Post.friendly.find(params[:post_id])
       attachment = Attachment.find_by_id(params[:post_id])
+
 
       if current_user.nil?
         redirect_to new_user_session_path
       else
-        if post.user_id != current_user.id
-          # if post.id != attachment.post_id
-            redirect_to root_path
-          # end
+        # if post.user_id != current_user.id
+        #   # if post.id != attachment.post_id
+        #     redirect_to root_path
+        #   # end
+        # end
+        # @post && @post.user != current_user
+        if post && post.user != current_user
+          if post.user != attachment
+            # Or make it as a route
+            render "shared/error"
+          end
         end
+
       end
     end
 end

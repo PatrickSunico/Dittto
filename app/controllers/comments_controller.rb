@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   def create
     # 1. find the post first
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
     # 2. create the comment with the comment_params
     @comment = Comment.create(comment_params)
     # 3. Define which user added the comment
