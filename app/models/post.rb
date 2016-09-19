@@ -8,10 +8,5 @@ class Post < ApplicationRecord
   has_many :comments, :dependent => :destroy
   has_many :attachments, :dependent => :destroy
   process_in_background :thumbnail
-  friendly_id :title, use: [:slugged, :history]
-
-  def should_generate_new_friendly_id?
-    slug.blank? || self.title_changed?
-  end
-
+  friendly_id :title, use: [:slugged]
 end
