@@ -78,11 +78,6 @@ class PostsController < ApplicationController
     def authorize_user
       if current_user.nil?
         redirect_to new_user_session_path, alert: "Not Authorized Please Login"
-      else
-        if @post && @post.user != current_user
-          redirect_to root_path
-        end
       end
     end
-
 end
