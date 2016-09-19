@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :authorize_user, except: [:index, :show]
 
   def index
-    @posts = Post.friendly.all
+    @posts = Post.all
   end
 
   def show
@@ -72,7 +72,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :description, :thumbnail)
+      params.require(:post).permit(:title, :description, :thumbnail, :slug)
     end
 
     def authorize_user
