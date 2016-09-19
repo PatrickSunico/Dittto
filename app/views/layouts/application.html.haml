@@ -16,7 +16,7 @@
 
             -# Make this as a modal
             = link_to current_user.first_name, edit_user_registration_path
-            = link_to "View Profile", user_path(current_user.id)
+            = link_to "View Profile", user_path(current_user)
             = link_to "Logout", destroy_user_session_path, method: :delete
 
           - else

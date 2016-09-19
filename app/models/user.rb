@@ -16,5 +16,9 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   process_in_background :avatar
 
-  friendly_id :userhandle, use: :slugged
+  friendly_id :userhandle, use: [:slugged, :history]
+
+  def should_generate_new_friendly_id?
+    slug.blank? || self.userhandle_changed?
+  end
 end
