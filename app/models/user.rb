@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  extend FriendlyId
+  friendly_id :userhandle, use: :slugged
   validates :first_name, :last_name, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -14,5 +16,12 @@ class User < ApplicationRecord
   # Mount Uploader for Avatar
   mount_uploader :avatar, AvatarUploader
   process_in_background :avatar
+
+  def slug_candidates
+    [
+      :userhandle,
+      [:userhandle, :id]
+    ]
+  end
 
 end
