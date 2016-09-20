@@ -7,6 +7,7 @@ class AttachmentsController < ApplicationController
     @attachment = @post.attachments.build
     respond_to do |format|
       format.html
+      format.js
     end
   end
 

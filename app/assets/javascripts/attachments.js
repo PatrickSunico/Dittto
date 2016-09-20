@@ -11,6 +11,7 @@ addRemoveLinks: true,
 dictDefaultMessage: "<h2>Click anywhere or Drag and Drop Files here to Upload</h2>",
 dictFileTooBig: "File too Big, Size limit is 2mb",
 acceptedFiles: "image/jpeg,image/png,image/gif",
+previewsContainer: "#preview-area",
 maxFiles: 3,
 
   // The setting up of the dropzone
@@ -28,6 +29,9 @@ maxFiles: 3,
       var file_list = self.files
       var rejectedFiles = self.getRejectedFiles();
       var acceptedFiles = self.options.acceptedFiles;
+      var uploadMessage = $("div.text-container");
+      var removeLink = $('a.dz-remove')
+
 
       // file_list[3] = limit of files that is allowed to be dropped
       if (file_list[3] != null){
@@ -50,6 +54,22 @@ maxFiles: 3,
             type: "error"
           });
         }
+      });
+
+      // Hides Message If there are dropped files in the Dropzone
+      // Show Message If there are no dropped files in the dropzone
+      file_list.forEach(function(index) {
+        console.log(index);
+        if(index > 1) {
+          uploadMessage.show();
+        } else {
+          uploadMessage.hide();
+        }
+        removeLink.on("click", function(e) {
+          if (self.getUploadingFiles().length === 0 && self.getQueuedFiles().length === 0) {
+            uploadMessage.show();
+          }
+        });
       });
     });
 

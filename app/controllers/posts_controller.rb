@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     @comments = Comment.where(post_id: @post)
     # Finds all attachments associated with an existing post
     @attachments = Attachment.where(post_id: @post)
+    @attachment = @post.attachments.build
   end
 
   def new
