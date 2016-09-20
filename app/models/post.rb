@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   extend FriendlyId
-  friendly_id :slug_candidates, use: :slugged
+  friendly_id :slug_candidates, use: [:slugged, :history]
   acts_as_votable
   validates :title, :description, :thumbnail, presence: true
   mount_uploader :thumbnail, ThumbnailUploader
@@ -16,5 +16,4 @@ class Post < ApplicationRecord
       [:title, :id]
     ]
   end
-
 end
