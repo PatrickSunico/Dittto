@@ -17,15 +17,5 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   process_in_background :avatar
 
-<<<<<<< HEAD
-
-=======
-  def slug_candidates
-    [
-      :userhandle,
-      [:userhandle, :id]
-    ]
-  end
->>>>>>> new_friendly_id_branch
 
 end
