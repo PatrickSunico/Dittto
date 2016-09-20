@@ -17,10 +17,12 @@ Created by:
 
 - if @post.user == current_user
   = link_to "Edit", edit_post_path(@post)
-  = link_to "Add Attachments", new_post_attachment_path(@post)
+  -# Renders a modal form
+  -# Modal Targetter
+  %button.btn.btn-default{:type => "button", "data-toggle" => "modal", "data-target" => "#new_post_attachment"} Add Attachments
+  -# Modal
 
-
--# Renders a modal form
+  = render(partial: "attachments/form")
 
 -# Attachments
 -# if current user owns this post and the attachments show attachment actions

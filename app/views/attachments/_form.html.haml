@@ -1,5 +1,17 @@
-#container
-  .header
-    = simple_form_for([attachment.post, attachment], html: { multipart: true, class: "dropzone"}) do |f|
-      .dropzone-previews
-      = f.button :submit
+#new_post_attachment.modal.fade{"aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4#exampleModalLabel.modal-title Add Attachments
+      .modal-body
+        = simple_form_for([@attachment.post, @attachment], html: {multipart: true, class: "dropzone"}) do |f|
+          .dz-default.dz-message
+            .text-container
+              %h2#dropzone-message Click Anywhere or Drag and Drop Files Here to Upload
+            -# Default preview Area for files
+            #preview-area
+
+          .modal-footer
+            = f.button :submit, :class => "submit-button"
