@@ -2,6 +2,14 @@ $font-stack: 'Arimo', sans-serif;
 
 * {
   font-family: $font-stack;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+a {
+  font-family: $font-stack;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -10,4 +18,11 @@ h1,h2,h3,h4,h5,h6 {
 }
 p {
   font-size: 18px;
+}
+
+body,html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  max-height: 100%;
+  max-width: 100%;
 }

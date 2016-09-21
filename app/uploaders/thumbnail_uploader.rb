@@ -43,7 +43,7 @@ class ThumbnailUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :medium do
-    process :resize_to_fit => [300, 230]
+    process :scale => [300, 230]
   end
 
   version :large do

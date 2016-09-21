@@ -1,0 +1,32 @@
+nav.navbar {
+  border-radius: 0;
+  border-bottom: 1px solid #000;
+  background: #FFFFFF;
+  margin: 0;
+  .navbar-brand{
+    border: 1px solid #000;
+    margin: 20px;
+    a.logo {
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #000;
+      letter-spacing: 5.4px
+    }
+  }
+  button.navbar-toggle {
+    margin-top: 28px;
+    margin-bottom: 22px;
+    border: 0;
+    background: transparent !important;
+    &:hover {
+      background: transparent !important;
+    }
+  }
+  ul.list-items {
+    margin: 20px 0 20px 0;
+    font-size: 1em;
+    a {
+      color: #000;
+    }
+  }
+}

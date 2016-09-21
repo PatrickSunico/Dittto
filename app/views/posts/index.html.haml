@@ -1,18 +1,21 @@
+#project-wrapper
+  .container
+    .row
+      .welcome-container
+        %h2.welcome-title Welcome to Dittto
+        %h3.title Show off some of your skills with your awesome work.
 
-%h1 Welcome to Tribble
 
-- @posts.each do |post|
-  = link_to image_tag(post.thumbnail.url(:medium).to_s), post
-  %h2= link_to post.title, post
-  %p
-  Created by:
-  = link_to "#{post.user.first_name} #{post.user.last_name}", user_path(post.user)
-  %p
-  = post.comments.count
-  Comments
-  %p
-  = post.get_likes.size
-  Likes
-  %p
-  = post.get_dislikes.size
-  Dislikes
+      - @posts.each do |post|
+        .col-md-3.col-sm-6.thumb
+          %h2= link_to post.title, post
+          = link_to post do
+            = cl_image_tag(post.thumbnail.url(:medium).to_s)
+          %p
+          = link_to "#{post.user.first_name} #{post.user.last_name}", user_path(post.user)
+          %p
+          = post.comments.count
+          Comments
+          %p
+          = post.get_likes.size
+          Likes

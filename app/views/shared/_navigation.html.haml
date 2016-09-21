@@ -1,0 +1,38 @@
+%nav.navbar.navbar-default
+  .container
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %div.navbar-brand
+        = link_to "Dittto", root_path, {:class => "logo"}
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+
+      %ul.nav.navbar-nav.navbar-right.list-items
+        - if user_signed_in?
+          %li.dropdown
+            %a.dropdown-toggle.dropdown-button{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              = current_user.first_name
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                = link_to "Account Settings", edit_user_registration_path
+              %li
+                = link_to "View Profile", user_path(current_user)
+              %li.divider{:role => "separator"}
+              %li
+                = link_to "Logout", destroy_user_session_path, method: :delete
+            %li
+              = link_to "Add New Insipration", new_post_path
+        - else
+          %li
+            = link_to "Login", new_user_session_path
+          %li
+            = link_to "Sign up", new_user_registration_path
+
+    / /.navbar-collapse
+  / /.container-fluid
