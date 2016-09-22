@@ -4,7 +4,9 @@ $(document).ready(function() {
   $inputField.change(function() {
     return $('#file-display').val($(this).val().replace(/^.*[\\\/]/, ''));
   });
-  return $('#upload-btn').click(function() {
+  return $('button#upload-btn').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
     return $inputField.click();
   });
 });

@@ -1,12 +1,14 @@
-= simple_form_for @post, html: {class: 'form-vertical'} do |f|
+= simple_form_for @post, html: {class: 'form-vertical post-form'} do |f|
   = f.input :title, label: "Project Title", :required => false
   %div.form-group
     = f.input :thumbnail, as: :file, :required => false, input_html: { hidden: true }
     %div.input-append
-      %input#file-display.input-large.uneditable-input{:type => "text"}
-      %a#upload-btn.btn-sharp
+      -# Button
+      %button#upload-btn.btn-sharp
         %i.icon-upload-alt
         Browse
+      -# Label Field for file
+      %input#file-display.input-large.uneditable-input{:disabled => "disabled", :type => "text"}
 
   = f.input :description, :required => false, :input_html => {:rows => 6, :autocomplete => "off"}
   = f.button :submit, class: "btn-sharp"
