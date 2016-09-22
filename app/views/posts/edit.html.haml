@@ -1,10 +1,18 @@
--# Title
-%h1= "Edit Post"
--# Existing Image on post
-= image_tag @post.thumbnail.url(:medium).to_s
--# Render Form
-= render 'form'
-
-= link_to "Edit", edit_post_path(@post)
-= link_to "Destroy", post_path(@post), method: :delete, data: {confirm: "Are you Sure?"}
-= link_to "Back", post_path(@post)
+#post-wrapper
+  .container
+    = link_to "Back", post_path(@post)
+    %ul.pull-right.list-items
+      %li.dropdown
+        %a.dropdown-toggle.dropdown-button{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          Edit
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            = link_to "Delete Post", post_path(@post), method: :delete, data: {confirm: "Are you Sure?"}
+    .row
+      .post-container
+        = image_tag @post.thumbnail.url(:medium).to_s, :class => "img-medium"
+        -# Title
+        %h1= "Edit Post"
+        -# Render Form
+        = render 'form'
