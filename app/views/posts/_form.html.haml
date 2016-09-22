@@ -1,5 +1,12 @@
 = simple_form_for @post, html: {class: 'form-vertical'} do |f|
-  = f.input :title, :required => false
-  = f.input :thumbnail, as: :file, :required => false
-  = f.input :description, :required => false
-  = f.button :submit
+  = f.input :title, label: "Project Title", :required => false
+  %div.form-group
+    = f.input :thumbnail, as: :file, :required => false, input_html: { hidden: true }
+    %div.input-append
+      %input#file-display.input-large.uneditable-input{:type => "text"}
+      %a#upload-btn.btn-sharp
+        %i.icon-upload-alt
+        Browse
+
+  = f.input :description, :required => false, :input_html => {:rows => 6, :autocomplete => "off"}
+  = f.button :submit, class: "btn-sharp"

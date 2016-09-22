@@ -3,8 +3,6 @@ $font-stack: 'Arimo', sans-serif;
 * {
   font-family: $font-stack;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
@@ -18,12 +16,39 @@ h1,h2,h3,h4,h5,h6 {
 }
 p {
   font-size: 18px;
+  margin: 0;
+
 }
 
 body,html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   height: 100%;
-  height: 100%;
-  overflow-x: hidden;
+  width: 100%;
+  overflow-x:hidden
+}
+
+// Defaults
+.btn-sharp {
+  padding: 18px 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 0;
+  color:#fff;
+  transition: all 0.30s ease-in-out;
+  &:link {
+    color:white
+  }
+  &:visited{
+    color:white;
+  }
+  &:hover {
+    color: white;
+    outline: none;
+  }
+  &:active {
+    outline: none;
+    color:white;
+  }
 }
